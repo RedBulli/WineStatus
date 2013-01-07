@@ -1,0 +1,33 @@
+{
+  "name": "Viinitilanne",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "Yhdistää Alkon myymäläkohtaisen viinitilanteen
+  Viinilehden Viinistä viiniin palvelussa.",
+  "background": { "scripts": ["background.js"] },
+  "icons": { 
+    "16": "viini_16.png",
+    "48": "viini_48.png",
+    "128": "viini_128.png" },
+  "page_action" :
+  {
+    "default_icon" : "viini_48.png",
+    "default_title" : "Viinitilanne"
+  },
+  "content_scripts" : [
+    {
+      "matches" : [
+        "http://viinilehti.fi/viini/viinista-viiniin/haku/*"
+      ],
+      "js" : ["contentscript.js"],
+      "run_at" : "document_idle",
+      "all_frames" : false
+    }
+  ],
+  "permissions": [
+    "http://viinilehti.fi/viini/viinista-viiniin/haku/*",
+    "http://alko.fi/servlet/*",
+    "http://www.alko.fi/myymala/liitetiedostot/*"
+  ],
+  "options_page": "options.html"
+}
