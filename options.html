@@ -3,55 +3,75 @@
   <head>
     <meta charset="utf-8" />
     <title>Viinitilanne - Myymälän valinta</title>
+    <style>
+      td {
+        width: 20em;
+        vertical-align:top;
+        padding-bottom: 0.5em;
+      }
+    </style>
   </head>
   <script src="jquery.js"></script>
   <script src="options.js"></script>
   <body>
     <h1>Viinitilanne - Myymälän asetus</h1>
-    Valitse myymälä:
-    <select id="store">
-    </select>
+    <table>
+      <tr>
+        <td class="desc">
+          Valitse myymälä:
+        </td>
+        <td>
+          <select id="store">
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="desc">
+          Valitse kaupunki tai maakunta, missä valitsemasi myymälä sijaitsee:
+          <br/>
+          <b>Huom!</b> 'Koko maa'-valinta toimii, mutta haut ovat silloin erittäin hitaita. Jos myymälä ei sijaitse valitsemallasi alueella, haku epäonnistuu.
+        </td>
+        <td>
+          <select ID="area">
+            <option value="KOKO">Koko maa
+            <option value="KUNTA_Espoo">Espoo
+            <option value="KUNTA_Helsinki">Helsinki
+            <option value="KUNTA_Hämeenlinna">Hämeenlinna
+            <option value="KUNTA_Joensuu">Joensuu
+            <option value="KUNTA_Jyväskylä">Jyväskylä
+            <option value="KUNTA_Kouvola">Kouvola
+            <option value="KUNTA_Kuopio">Kuopio
+            <option value="KUNTA_Lahti">Lahti
+            <option value="KUNTA_Oulu">Oulu
+            <option value="KUNTA_Tampere">Tampere
+            <option value="KUNTA_Turku">Turku
+            <option value="KUNTA_Vantaa">Vantaa
+            <option value="MAAKUNTA_AHVENANMAA">Ahvenanmaa
+            <option value="MAAKUNTA_ETELA-KARJALA">Etelä-Karjala
+            <option value="MAAKUNTA_ETELA-POHJANMAA">Etelä-Pohjanmaa
+            <option value="MAAKUNTA_ETELA-SAVO">Etelä-Savo
+            <option value="MAAKUNTA_ITA-UUSIMAA">Itä-Uusimaa
+            <option value="MAAKUNTA_KAINUU">Kainuu
+            <option value="MAAKUNTA_KANTA-HAME">Kanta-Häme
+            <option value="MAAKUNTA_KESKI-POHJANMAA">Keski-Pohjanmaa
+            <option value="MAAKUNTA_KESKI-SUOMI">Keski-Suomi
+            <option value="MAAKUNTA_KYMENLAAKSO">Kymenlaakso
+            <option value="MAAKUNTA_LAPPI">Lappi
+            <option value="MAAKUNTA_PIRKANMAA">Pirkanmaa
+            <option value="MAAKUNTA_POHJANMAA">Pohjanmaa
+            <option value="MAAKUNTA_POHJOIS-KARJALA">Pohjois-Karjala
+            <option value="MAAKUNTA_POHJOIS-POHJANMAA">Pohjois-Pohjanmaa
+            <option value="MAAKUNTA_POHJOIS-SAVO">Pohjois-Savo
+            <option value="MAAKUNTA_PAIJAT-HAME">Päijät-Häme
+            <option value="MAAKUNTA_SATAKUNTA">Satakunta
+            <option value="MAAKUNTA_UUSIMAA">Uusimaa
+            <option value="MAAKUNTA_VARSINAIS-SUOMI">Varsinais-Suomi
+          </select>
+        </td>
+      </tr>
+    </table>
+    <button id="save">Tallenna valinta</button><div id="status"></div>
     <br />
-    Valitse kaupunki tai maakunta, missä valitsemasi myymälä sijaitsee:
-    <select ID="area">
-      <option value="KOKO">Koko maa
-      <option value="KUNTA_Espoo">Espoo
-      <option value="KUNTA_Helsinki">Helsinki
-      <option value="KUNTA_Hämeenlinna">Hämeenlinna
-      <option value="KUNTA_Joensuu">Joensuu
-      <option value="KUNTA_Jyväskylä">Jyväskylä
-      <option value="KUNTA_Kouvola">Kouvola
-      <option value="KUNTA_Kuopio">Kuopio
-      <option value="KUNTA_Lahti">Lahti
-      <option value="KUNTA_Oulu">Oulu
-      <option value="KUNTA_Tampere">Tampere
-      <option value="KUNTA_Turku">Turku
-      <option value="KUNTA_Vantaa">Vantaa
-      <option value="MAAKUNTA_AHVENANMAA">Ahvenanmaa
-      <option value="MAAKUNTA_ETELA-KARJALA">Etelä-Karjala
-      <option value="MAAKUNTA_ETELA-POHJANMAA">Etelä-Pohjanmaa
-      <option value="MAAKUNTA_ETELA-SAVO">Etelä-Savo
-      <option value="MAAKUNTA_ITA-UUSIMAA">Itä-Uusimaa
-      <option value="MAAKUNTA_KAINUU">Kainuu
-      <option value="MAAKUNTA_KANTA-HAME">Kanta-Häme
-      <option value="MAAKUNTA_KESKI-POHJANMAA">Keski-Pohjanmaa
-      <option value="MAAKUNTA_KESKI-SUOMI">Keski-Suomi
-      <option value="MAAKUNTA_KYMENLAAKSO">Kymenlaakso
-      <option value="MAAKUNTA_LAPPI">Lappi
-      <option value="MAAKUNTA_PIRKANMAA">Pirkanmaa
-      <option value="MAAKUNTA_POHJANMAA">Pohjanmaa
-      <option value="MAAKUNTA_POHJOIS-KARJALA">Pohjois-Karjala
-      <option value="MAAKUNTA_POHJOIS-POHJANMAA">Pohjois-Pohjanmaa
-      <option value="MAAKUNTA_POHJOIS-SAVO">Pohjois-Savo
-      <option value="MAAKUNTA_PAIJAT-HAME">Päijät-Häme
-      <option value="MAAKUNTA_SATAKUNTA">Satakunta
-      <option value="MAAKUNTA_UUSIMAA">Uusimaa
-      <option value="MAAKUNTA_VARSINAIS-SUOMI">Varsinais-Suomi
-    </select>
-    <br/>
-    <b>Huom!</b> 'Koko maa'-valinta toimii, mutta haut ovat silloin erittäin hitaita. Jos myymälä ei sijaitse valitsemallasi alueella, haku epäonnistuu.
-    <br/>
-    <div id="status"></div>
-    <button id="save">Tallenna valinta</button>
+    <div id="after">Kun olet tallentanut valintasi, palaa takaisin Viinistä Viiniin-välilehdelle selaimellasi ja paina Viinitilanne-lisäosan kuvaketta</div>
   </body>
 </html>

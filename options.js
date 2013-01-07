@@ -11,7 +11,7 @@ function saveStore() {
   status.html('Myymälä talletettu.');
   setTimeout(function() {
     status.html('');
-  }, 750);
+  }, 1500);
 }
 
 function restoreStore() {

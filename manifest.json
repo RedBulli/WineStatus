@@ -6,12 +6,12 @@
   Viinilehden Viinistä viiniin palvelussa.",
   "background": { "scripts": ["background.js"] },
   "icons": { 
-    "16": "viini_16.png",
-    "48": "viini_48.png",
-    "128": "viini_128.png" },
+    "16": "img/viini_16.png",
+    "48": "img/viini_48.png",
+    "128": "img/viini_128.png" },
   "page_action" :
   {
-    "default_icon" : "viini_48.png",
+    "default_icon" : "img/viini_48.png",
     "default_title" : "Viinitilanne"
   },
   "content_scripts" : [
