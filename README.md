@@ -6,7 +6,7 @@ Google Chrome-selaimen lisäosa, joka yhdistää Alkon myymäläkohtaisen viinit
 Asennus
 -------
 * Lataa lisäosa tietokoneellesi
-* Avaa Chromen 'Laajennukset'-näkymä (esim. Asetukset - Laajennukset)
+* Avaa Chromen ['Laajennukset'](chrome://chrome/extensions/)-näkymä (esim. Asetukset - Laajennukset)
 * Valitse kehittäjätila (oikealla ylhäällä)
 * Klikkaa 'Lataa laajennus'-painiketta ja valitse kansio, johon latasit lisäosan
 
