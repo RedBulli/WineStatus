@@ -15,6 +15,6 @@ Käyttö
 Kun teet haun [Viinistä Viiniin](http://viinilehti.fi/viini/viinista-viiniin/) palvelussa, osoitinriville ilmestyy kuvake viinipullosta, jota painamalla jokaisen viinin kohdalle lisätään teksti, jossa kerrotaan kuinka monta pulloa kyseistä viiniä on käyttäjän asettamassa Alkon myymälässä.
 
 ### Myymälän valinta ###
-Myymälä valitaan lisäosan asetuksista painamalla hiiren oikeaa näppäintä kuvakkeen kohdalla. Valitse haluamasi myymälä ja valitse alue, jossa myymälä sijaitsee. Haut epäonnistuvat, jos myymälä ei sijaitse valitsemallasi alueella. Kun olet valmis, paina 'Tallenna valinta'-painiketta.
+Myymälä valitaan lisäosan asetuksista painamalla hiiren oikeaa näppäintä kuvakkeen kohdalla. Valitse haluamasi myymälä, paina 'Tallenna valinta'-painiketta ja siirry takaisin Viinistä viiniin palveluun.
 
 Ensimmäistä kertaa käytettäessä lisäosa aukaisee asetukset automaattisesti, kun kuvaketta painetaan. Kun olet tallettanut valinnat, mene takaisin hakuun ja paina uudelleen Viinitilanne-lisäosan kuvaketta.

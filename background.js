@@ -7,9 +7,9 @@ chrome.extension.onRequest.addListener(onRequest);
 
 chrome.pageAction.onClicked.addListener(function(tab) {
   var storeId = localStorage['storeId'];
+  var storeCity = localStorage['storeCity'];
   var storeName = localStorage['storeName'];
-  var storeArea = localStorage['storeArea'];
-  if (!storeId || !storeName || !storeArea) {
+  if (!storeId || !storeName || !storeCity) {
     chrome.tabs.create({url: "options.html"});
   }
   chrome.tabs.executeScript(
@@ -34,21 +34,25 @@ chrome.pageAction.onClicked.addListener(function(tab) {
       + " el.innerText = 'Saatavuutta haetaan';"
       + " fetchAvailability(code);"
       + "};"
+      + "function findStoreData(data) {"
+      + " for (var i=0; i<data.length; i++) {"
+      + "  if (data[i].StoreLink === '/myymalat/'+" + storeId + "+'/') { return data[i]; }"
+      + " }"
+      + "}"
       + "function fetchAvailability(code) {"
       + " var xmlHttp = new XMLHttpRequest();"
-      + " var url = 'http://alko.fi/servlet/Saatavuus?doHaku=1&Kieli=FI&Tuotenumero=' + code + '&KuntaMaakunta=" + storeArea + "&';"
+      + " var url = 'http://www.alko.fi/api/product/availability?productId=' + code + '&cityId=" + storeCity + "&languageId=fi';"
       + " xmlHttp.onload = function() {"
-      + "  var alko = this.responseXML.querySelector('a[href=\"/myymalat/fi/" + storeId + "\"]');"
-      + "  var link = document.getElementById('viini_' + code);"
-      + "  link.href = url;"
-      + "  var bottleCount = 0;"
-      + "  if (alko) {"
-      + "   bottleCount = alko.parentNode.nextSibling.innerText.trim();"
-      + "  }"
-      + "  link.innerText = '" + storeName + ": ' + bottleCount + ' kpl.';"
+      + " var link = document.getElementById('viini_' + code);"
+      + " var storeData = findStoreData(JSON.parse(this.responseText));"
+      + " var bottleCount = 0;"
+      + " if (storeData) {"
+      + "  bottleCount = storeData.Amount;"
+      + " }"
+      + " link.innerText = '" + storeName + ": ' + bottleCount + ' kpl.';"
       + " };"
       + " xmlHttp.open('GET', url);"
-      + " xmlHttp.responseType = 'document';"
+      + " xmlHttp.responseType = 'json';"
       + " xmlHttp.send(null);"
       + "}"      
     }

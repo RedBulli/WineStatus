@@ -1,12 +1,10 @@
 var stores;
 
-function saveStore() {
-  var select = $('#store');
-  var store = stores[select.val()];
-  var storeArea = $('#area').val();
-  localStorage['storeId'] = store.id;
-  localStorage['storeName'] = store.name;
-  localStorage['storeArea'] = storeArea;
+function saveStore(el) {
+  var store = stores[el.val()];
+  localStorage['storeId'] = store.StoreId;
+  localStorage['storeName'] = store.Name;
+  localStorage['storeCity'] = store.City;
   var status = $('#status');
   status.html('Myymälä talletettu.');
   setTimeout(function() {
@@ -15,49 +13,36 @@ function saveStore() {
 }
 
 function restoreStore() {
-  var storeId = parseInt(localStorage['storeId']);
-  var storeArea = localStorage['storeArea'];
+  var storeId = localStorage['storeId'];
   if (storeId) {
     $('#store').val(storeId);
   }
-  if (storeArea) {
-    $('#area').val(storeArea);
-  }
-  else {
-    $('#area').val("KOKO");
-  }
 }
 
-function initStores() {
+function initStores(el) {
+  el.empty();
   stores = {};
   $.ajax({
-    url: 'http://www.alko.fi/myymala/liitetiedostot/myymalatfi/$File/myymos.txt',
-    mimeType: 'text/plain;charset=iso-8859-1',
+    url: 'http://www.alko.fi/api/store/markers?language=fi',
+    mimeType: 'application/json;charset=utf-8',
     success: function(data) {
-      var storeTexts = data.split('\n');
-      storeTexts.splice(0,3);
-      storeTexts.pop();
-      var el = $('#store');
-      $.each(storeTexts, function(index, value) {
-        var store = getStore(value);
-        el.append('<option value="' + store.id + '">' + store.name + '</option>');
-        stores[store.id] = store;
+      data.sort(SortByName);
+      $.each(data, function(index, store) {
+        el.append('<option value="' + store.StoreId + '">' + store.Name + '</option>');
+        stores[store.StoreId] = store;
       });
       restoreStore();
-      $('#save').click(function() {saveStore();});
+      $('#save').click(function() {saveStore(el);});
     }
   });
 }
 
-function getStore(storeText) {
-  var store = {};
-  var textArray = storeText.split('\t');
-  store.id = textArray[13];
-  store.id = parseInt(store.id.trim());
-  store.name = textArray[0];
-  return store;
+function SortByName(a, b){
+  var aName = a.Name.toLowerCase();
+  var bName = b.Name.toLowerCase(); 
+  return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
 }
 
 $(document).ready(function(){
-  initStores();
+  initStores($('#store'));
 });
