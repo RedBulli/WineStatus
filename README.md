@@ -3,6 +3,8 @@ Viinitilanne
 
 Google Chrome-selaimen lisäosa, joka yhdistää Alkon myymäläkohtaisen viinitilanteen Viinilehden Viinistä viiniin palveluun.
 
+Päivitys 14.12.2013: Alkon API muuttuu niin tiuhaan tahtiin, että katsotaan kun taas jaksan päivittää tämän ajan tasalle.
+
 Asennus
 -------
 * Lataa lisäosa tietokoneellesi
