@@ -41,7 +41,7 @@ chrome.pageAction.onClicked.addListener(function(tab) {
       + "}"
       + "function fetchAvailability(code) {"
       + " var xmlHttp = new XMLHttpRequest();"
-      + " var url = 'http://www.alko.fi/api/product/availability?productId=' + code + '&cityId=" + storeCity + "&languageId=fi';"
+      + " var url = 'http://www.alko.fi/api/product/Availability?productId=' + code + '&cityId=" + storeCity + "&languageId=fi';"
       + " xmlHttp.onload = function() {"
       + " var link = document.getElementById('viini_' + code);"
       + " var storeData = findStoreData(JSON.parse(this.responseText));"
