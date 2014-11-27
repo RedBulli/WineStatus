@@ -26,8 +26,8 @@
   ],
   "permissions": [
     "http://viinilehti.fi/viini/viinista-viiniin/haku/*",
-    "http://alko.fi/servlet/*",
-    "http://www.alko.fi/myymala/liitetiedostot/*"
+    "http://alko.fi/*",
+    "http://www.alko.fi/*"
   ],
   "options_page": "options.html"
 }

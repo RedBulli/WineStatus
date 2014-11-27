@@ -1,10 +1,6 @@
-var stores;
-
-function saveStore(el) {
-  var store = stores[el.val()];
-  localStorage['storeId'] = store.StoreId;
-  localStorage['storeName'] = store.Name;
-  localStorage['storeCity'] = store.City;
+function saveStore(cityId, storeName) {
+  localStorage['cityId'] = cityId;
+  localStorage['storeName'] = storeName;
   var status = $('#status');
   status.html('Myymälä talletettu.');
   setTimeout(function() {
@@ -12,37 +8,14 @@ function saveStore(el) {
   }, 1500);
 }
 
-function restoreStore() {
-  var storeId = localStorage['storeId'];
-  if (storeId) {
-    $('#store').val(storeId);
-  }
-}
-
-function initStores(el) {
-  el.empty();
-  stores = {};
-  $.ajax({
-    url: 'http://www.alko.fi/api/store/markers?language=fi',
-    mimeType: 'application/json;charset=utf-8',
-    success: function(data) {
-      data.sort(SortByName);
-      $.each(data, function(index, store) {
-        el.append('<option value="' + store.StoreId + '">' + store.Name + '</option>');
-        stores[store.StoreId] = store;
-      });
-      restoreStore();
-      $('#save').click(function() {saveStore(el);});
-    }
-  });
-}
-
-function SortByName(a, b){
-  var aName = a.Name.toLowerCase();
-  var bName = b.Name.toLowerCase(); 
-  return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
+function loadStore() {
+  $('#cityId').val(localStorage['cityId']);
+  $('#storeName').val(localStorage['storeName']);
 }
 
 $(document).ready(function(){
-  initStores($('#store'));
+  loadStore();
+  $('#save').click(function() {
+    saveStore($('#cityId').val(), $('#storeName').val());
+  });
 });
