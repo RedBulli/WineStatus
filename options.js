@@ -1,6 +1,8 @@
 function saveStore(cityId, storeName) {
-  localStorage['cityId'] = cityId;
-  localStorage['storeName'] = storeName;
+  chrome.storage.sync.set({
+    cityId: cityId,
+    storeName: storeName
+  });
   var status = $('#status');
   status.html('Myymälä talletettu.');
   setTimeout(function() {
@@ -9,8 +11,10 @@ function saveStore(cityId, storeName) {
 }
 
 function loadStore() {
-  $('#cityId').val(localStorage['cityId']);
-  $('#storeName').val(localStorage['storeName']);
+  chrome.storage.sync.get(['cityId', 'storeName'], function(vals) {
+    $('#cityId').val(vals['cityId']);
+    $('#storeName').val(vals['storeName']);
+  });
 }
 
 $(document).ready(function(){

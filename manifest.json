@@ -5,7 +5,7 @@
   "description": "Yhdistää Alkon myymäläkohtaisen viinitilanteen
   Viinilehden Viinistä viiniin palvelussa.",
   "background": { "scripts": ["background.js"] },
-  "icons": { 
+  "icons": {
     "16": "img/viini_16.png",
     "48": "img/viini_48.png",
     "128": "img/viini_128.png" },
@@ -27,7 +27,8 @@
   "permissions": [
     "http://viinilehti.fi/viini/viinista-viiniin/haku/*",
     "http://alko.fi/*",
-    "http://www.alko.fi/*"
+    "http://www.alko.fi/*",
+    "storage"
   ],
   "options_page": "options.html"
 }
